@@ -88,7 +88,7 @@ Route::put('add-user-wristband',['as'=>'add-user-wristband','uses'=>'DashboardCo
     Route::group(['middleware'=>'check-permission:staff|customer|administrator'], function () {
       //GET REQUEST
       Route::get('fetch_product',['as'=>'fetch_product','uses'=>'DashboardController@getProducts']);
-
+     Route::post('bid-timeout',['as'=>'bid-timeout','uses'=>'DashboardController@BIDtimeout']);
 
       //POST REQUEST
       Route::post('updatePassword', 'UserController@postChangePass')->name('updatePassword');
