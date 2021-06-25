@@ -91,7 +91,7 @@ class DashboardController extends Controller
 if($data['activities']){
   $data=Bid::where('product_id', $request->product_id)
   ->update([
-      'status' => 'WON'
+      'status' => '1'
    ]);
    $data=Products::where('product_id', $request->product_id)
    ->update([
