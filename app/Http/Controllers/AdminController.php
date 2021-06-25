@@ -31,7 +31,7 @@ class AdminController extends Controller
         {
 
               return response()->json([
-              "code"  => Response::HTTP_UNPROCESSABLE_ENTITY,
+              "status" => Response::HTTP_UNPROCESSABLE_ENTITY,
               "type"  => "invalid",
               "developerMessage"  => $validator->messages(),
               ],Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -71,7 +71,7 @@ class AdminController extends Controller
       $data['counts']=  $data['activities']->count();
       return response()->json(['message' =>$data,'code'=>Response::HTTP_OK],Response::HTTP_OK);
     }
-  
+
 
 
 }

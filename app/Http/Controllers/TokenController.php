@@ -55,12 +55,12 @@ if ($user[0]->email_code == $id)
     $useOwner->save();
     return Redirect::away($url);
    //  return response()->json([
-   //  "code"  =>  Response::HTTP_OK,
+   //  "status" =>  Response::HTTP_OK,
    //  "developerMessage" => $request->get('name')."Welcome Verification successfully!"
    // ],Response::HTTP_OK);
 }else{
  return response()->json([
- "code"  =>  Response::HTTP_NOT_FOUND,
+ "status" =>  Response::HTTP_NOT_FOUND,
  "developerMessage" => "Verification Code in Invalid."
 ],Response::HTTP_NOT_FOUND);
 

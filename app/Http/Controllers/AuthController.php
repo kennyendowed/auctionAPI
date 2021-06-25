@@ -116,7 +116,7 @@ class AuthController extends Controller
 
       $validator=Validator::make($request->all(), [
         'first_name' => ['required', 'string', 'max:255'],
-        'last_name' => ['required', 'string', 'max:255'],       
+        'last_name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'phone' =>['required','unique:users','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
         'password' => ['required', 'string', 'min:8','regex:/[a-z]/','regex:/[A-Z]/','regex:/[0-9]/','regex:/[@$!%*#?&]/', 'confirmed'],
@@ -127,7 +127,7 @@ class AuthController extends Controller
     {
 
           return response()->json([
-          "code"  =>  Response::HTTP_BAD_REQUEST,
+          "status" =>  Response::HTTP_BAD_REQUEST,
           "type"  => "invalid",
           "message"  =>  "invalid_credentials",
           "developerMessage"  => $validator->messages(),
@@ -168,7 +168,7 @@ $data = array(
             $u = new RegisterResource($user);
 
             return response()->json([
-              "code"  =>  Response::HTTP_CREATED,
+              "status" =>  Response::HTTP_CREATED,
               "message"  =>  "Account Created Please Check Register Email Account To Complete Registration",
               "developerMessage"  => $u,
               ], Response::HTTP_CREATED);
@@ -197,7 +197,7 @@ $data = array(
       {
 
         return response()->json([
-        "code"  =>  '400',
+        "status" =>  '400',
         "type"  => "invalid",
         "message"  =>  "invalid_credentials",
         "developerMessage"  => $validator->messages(),
@@ -219,7 +219,7 @@ $token = JWTAuth::attempt($credentials, ['exp' => Carbon::now()->addDays(1)->toD
       if (!$token) {
 
           return response()->json([
-          "code"  =>  Response::HTTP_NOT_FOUND,
+          "status" =>  Response::HTTP_NOT_FOUND,
           "type"  => "invalid",
           "message" => "We were unable to validate your credentials, please check your credentials and try again",
           "developerMessage" => "These credentials do not match our records."
@@ -232,7 +232,7 @@ $token = JWTAuth::attempt($credentials, ['exp' => Carbon::now()->addDays(1)->toD
     {
       return response()->json([
         "message"=>"verify",
-        "code"  =>  Response::HTTP_FORBIDDEN,
+        "status" =>  Response::HTTP_FORBIDDEN,
         "developerMessage" => "Account unverify please check your email for verification link"
       ],Response::HTTP_FORBIDDEN);
     }
@@ -277,9 +277,12 @@ $token = JWTAuth::attempt($credentials, ['exp' => Carbon::now()->addDays(1)->toD
       //   $user = auth()->payload();
       //   $u=$user['exp'];
       //   $dt=new DateTime("@$u");
+
 return response()->json([
-    'token' => $token
-]);
+  "status" =>  Response::HTTP_OK,
+  'token' => $token
+  ], Response::HTTP_OK);
+
     }
 
 
