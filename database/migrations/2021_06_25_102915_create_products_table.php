@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('information')->nullable();
             $table->bigInteger('price')->default(0);
             $table->string('status')->default(0);
+            $table->string('endtime');
             $table->timestamps();
         });
     }

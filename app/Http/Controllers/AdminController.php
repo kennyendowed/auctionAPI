@@ -25,7 +25,8 @@ class AdminController extends Controller
             'name' => 'required|unique:products,name',
             'price' => 'required|integer',
             'information' => ['required', 'string'],
-            'avater' => 'required|mimes:jpg,png,jpeg,gif'
+            'avater' => 'required|mimes:jpg,png,jpeg,gif',
+            'endtime' => 'required'
         ]);
         if($validator->fails())
         {
