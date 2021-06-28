@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('price')->default(0);
             $table->string('status')->default(0);
             $table->string('endtime');
+            $table->bigInteger('bidstatus')->default(0);
             $table->timestamps();
         });
     }
