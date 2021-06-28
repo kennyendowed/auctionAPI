@@ -221,7 +221,7 @@ $token = JWTAuth::attempt($credentials, ['exp' => Carbon::now()->addDays(1)->toD
           return response()->json([
           "status" =>  Response::HTTP_NOT_FOUND,
           "type"  => "invalid",
-          "message" => "We were unable to validate your credentials, please check your credentials and try again",
+          "message" => "These credentials do not match our records.",
           "developerMessage" => "These credentials do not match our records."
         ],Response::HTTP_NOT_FOUND);
       }
