@@ -63,6 +63,7 @@ Route::get('bids-won',['as'=>'bids-won','uses'=>'DashboardController@bidWon']);
      //POST
 
 Route::post('create_product',['as'=>'create-product','uses'=>'AdminController@createProduct']);
+Route::post('activate-Bid/{id}',['as'=>'activate-Bid','uses'=>'DashboardController@activateBid']);
 Route::post('delete-Activities',['as'=>'delete-Activities','uses'=>'DashboardController@deleteActivities']);
 
     });

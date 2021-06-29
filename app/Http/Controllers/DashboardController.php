@@ -39,6 +39,24 @@ class DashboardController extends Controller
     return response()->json(['message' =>$data,"status"=>Response::HTTP_OK],Response::HTTP_OK);
   }
 
+  public function activateBid($productId)
+  {
+    $data['page_title'] = "Activate Bid";
+    $check=Products::where('product_id','=',$productId)->first();
+    if (!$check) {
+      return response()->json(['message' => 'Data not found','code'=>Response::HTTP_NOT_FOUND],Response::HTTP_NOT_FOUND);
+  }
+  else{
+    $data=Products::where('product_id', $productId)
+    ->update([
+        'bidstatus' =>'1'
+     ]);
+     $check=Products::where('product_id','=',$productId)->first();
+    return response()->json(['message' =>'Product bid for','data'=>$check,"status"=>Response::HTTP_OK],Response::HTTP_OK);
+  }
+
+  }
+
   public function bidProduct($productId)
   {
     $data['page_title'] = "Bid Products";
