@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 25, 2021 at 02:17 PM
--- Server version: 8.0.25-0ubuntu0.20.04.1
--- PHP Version: 7.4.3
+-- Generation Time: Jun 29, 2021 at 11:48 AM
+-- Server version: 10.3.28-MariaDB-log-cll-lve
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `auctionapi`
+-- Database: `boldpuyd_auctionapi`
 --
 
 -- --------------------------------------------------------
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `api_keys` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `key` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -52,8 +52,8 @@ INSERT INTO `api_keys` (`id`, `name`, `key`, `active`, `created_at`, `updated_at
 --
 
 CREATE TABLE `api_key_access_events` (
-  `id` int UNSIGNED NOT NULL,
-  `api_key_id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `api_key_id` int(10) UNSIGNED NOT NULL,
   `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -150,7 +150,42 @@ INSERT INTO `api_key_access_events` (`id`, `api_key_id`, `ip_address`, `url`, `c
 (83, 1, '127.0.0.1', 'http://127.0.0.1:8000/api/bids-won', '2021-06-25 13:10:19', '2021-06-25 13:10:19'),
 (84, 1, '127.0.0.1', 'http://127.0.0.1:8000/api/bidswon', '2021-06-25 13:10:31', '2021-06-25 13:10:31'),
 (85, 1, '127.0.0.1', 'http://127.0.0.1:8000/api/bidswon', '2021-06-25 13:10:42', '2021-06-25 13:10:42'),
-(86, 1, '127.0.0.1', 'http://127.0.0.1:8000/api/bidswon', '2021-06-25 13:11:04', '2021-06-25 13:11:04');
+(86, 1, '127.0.0.1', 'http://127.0.0.1:8000/api/bidswon', '2021-06-25 13:11:04', '2021-06-25 13:11:04'),
+(87, 1, '41.204.224.210', 'http://api.boldfxtrade.com/public/api/signin', '2021-06-25 21:15:09', '2021-06-25 21:15:09'),
+(88, 1, '197.211.59.53', 'http://api.boldfxtrade.com/public/api/signin', '2021-06-25 22:06:23', '2021-06-25 22:06:23'),
+(89, 1, '197.211.59.53', 'http://api.boldfxtrade.com/public/api/signin', '2021-06-25 22:08:11', '2021-06-25 22:08:11'),
+(90, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/signin', '2021-06-25 22:09:50', '2021-06-25 22:09:50'),
+(91, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/signin', '2021-06-25 22:12:24', '2021-06-25 22:12:24'),
+(92, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/signin', '2021-06-25 22:15:46', '2021-06-25 22:15:46'),
+(93, 1, '102.89.3.240', 'http://api.boldfxtrade.com/api/fetch_product', '2021-06-26 08:15:44', '2021-06-26 08:15:44'),
+(94, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/signin', '2021-06-26 13:52:19', '2021-06-26 13:52:19'),
+(95, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/bid/841624621275', '2021-06-26 13:53:21', '2021-06-26 13:53:21'),
+(96, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/bid/841624621275', '2021-06-26 13:53:34', '2021-06-26 13:53:34'),
+(97, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/bid/841624621275', '2021-06-26 13:56:14', '2021-06-26 13:56:14'),
+(98, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/bid/841624621275', '2021-06-26 13:57:30', '2021-06-26 13:57:30'),
+(99, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/fetch_product', '2021-06-26 22:06:55', '2021-06-26 22:06:55'),
+(100, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/fetch_product', '2021-06-26 22:08:30', '2021-06-26 22:08:30'),
+(101, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/fetch_product', '2021-06-26 22:08:36', '2021-06-26 22:08:36'),
+(102, 1, '197.211.59.53', 'http://api.boldfxtrade.com/api/fetch_product', '2021-06-26 22:08:58', '2021-06-26 22:08:58'),
+(103, 1, '102.89.3.10', 'http://api.boldfxtrade.com/api/signin', '2021-06-28 23:19:08', '2021-06-28 23:19:08'),
+(104, 1, '197.210.47.255', 'http://api.boldfxtrade.com/api/signin', '2021-06-29 01:04:38', '2021-06-29 01:04:38'),
+(105, 1, '197.210.47.255', 'http://api.boldfxtrade.com/api/signin', '2021-06-29 01:06:50', '2021-06-29 01:06:50'),
+(106, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/create_product', '2021-06-29 13:51:19', '2021-06-29 13:51:19'),
+(107, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/signin', '2021-06-29 13:52:03', '2021-06-29 13:52:03'),
+(108, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/create_product', '2021-06-29 13:53:21', '2021-06-29 13:53:21'),
+(109, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/create_product', '2021-06-29 13:54:05', '2021-06-29 13:54:05'),
+(110, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/activate-Bid/571624956845', '2021-06-29 14:09:13', '2021-06-29 14:09:13'),
+(111, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/activate-Bid/571624956845', '2021-06-29 14:10:07', '2021-06-29 14:10:07'),
+(112, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/activate-Bid/571624956845', '2021-06-29 14:14:15', '2021-06-29 14:14:15'),
+(113, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/signin', '2021-06-29 14:34:35', '2021-06-29 14:34:35'),
+(114, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/bidswon', '2021-06-29 17:36:23', '2021-06-29 17:36:23'),
+(115, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/bidswon', '2021-06-29 17:42:39', '2021-06-29 17:42:39'),
+(116, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/bidswon', '2021-06-29 17:45:03', '2021-06-29 17:45:03'),
+(117, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/bidswon', '2021-06-29 17:46:23', '2021-06-29 17:46:23'),
+(118, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/bidswon', '2021-06-29 17:49:10', '2021-06-29 17:49:10'),
+(119, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/fetch_product', '2021-06-29 20:06:07', '2021-06-29 20:06:07'),
+(120, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/product/841624621275', '2021-06-29 20:06:30', '2021-06-29 20:06:30'),
+(121, 1, '41.204.224.210', 'http://api.boldfxtrade.com/api/product/841624621275', '2021-06-29 20:09:29', '2021-06-29 20:09:29');
 
 -- --------------------------------------------------------
 
@@ -159,8 +194,8 @@ INSERT INTO `api_key_access_events` (`id`, `api_key_id`, `ip_address`, `url`, `c
 --
 
 CREATE TABLE `api_key_admin_events` (
-  `id` int UNSIGNED NOT NULL,
-  `api_key_id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `api_key_id` int(10) UNSIGNED NOT NULL,
   `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `event` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -181,10 +216,10 @@ INSERT INTO `api_key_admin_events` (`id`, `api_key_id`, `ip_address`, `event`, `
 --
 
 CREATE TABLE `bids` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) NOT NULL DEFAULT 0,
   `product_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bid_amount` bigint NOT NULL DEFAULT '0',
+  `bid_amount` bigint(20) NOT NULL DEFAULT 0,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -195,7 +230,7 @@ CREATE TABLE `bids` (
 --
 
 INSERT INTO `bids` (`id`, `user_id`, `product_id`, `bid_amount`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, '841624621275', 600, '1', '2021-06-25 12:44:22', '2021-06-25 12:45:01');
+(1, 1, '841624621275', 750, '1', '2021-06-25 12:44:22', '2021-06-26 13:57:30');
 
 -- --------------------------------------------------------
 
@@ -204,12 +239,12 @@ INSERT INTO `bids` (`id`, `user_id`, `product_id`, `bid_amount`, `status`, `crea
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -219,9 +254,9 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -257,13 +292,15 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `products` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avater` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `information` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `price` bigint NOT NULL DEFAULT '0',
+  `price` bigint(20) NOT NULL DEFAULT 0,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `endtime` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bidstatus` int(10) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -272,9 +309,10 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `product_id`, `avater`, `information`, `price`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'salad rice', '841624621275', '/assets/images/product/1624621275.png', 'helo bag of rice', 600, '0', '2021-06-25 11:41:15', '2021-06-25 12:45:01'),
-(2, 'beans', '421624621302', '/assets/images/product/1624621302.png', 'helo bag of rice', 500, '0', '2021-06-25 11:41:42', '2021-06-25 11:41:42');
+INSERT INTO `products` (`id`, `name`, `product_id`, `avater`, `information`, `price`, `status`, `endtime`, `bidstatus`, `created_at`, `updated_at`) VALUES
+(1, 'salad rice', '841624621275', '/assets/images/product/1624621275.png', 'helo bag of rice', 750, '0', '300', 0, '2021-06-25 11:41:15', '2021-06-26 13:57:30'),
+(2, 'beans', '421624621302', '/assets/images/product/1624621302.png', 'helo bag of rice', 500, '0', '600', 0, '2021-06-25 11:41:42', '2021-06-25 11:41:42'),
+(3, 'Yam stew', '571624956845', '/assets/images/product/1624956845.png', 'helo bag of rice', 500, '0', '350', 1, '2021-06-29 13:54:05', '2021-06-29 14:14:15');
 
 -- --------------------------------------------------------
 
@@ -283,7 +321,7 @@ INSERT INTO `products` (`id`, `name`, `product_id`, `avater`, `information`, `pr
 --
 
 CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -294,8 +332,8 @@ CREATE TABLE `users` (
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_time` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_verify` bigint NOT NULL DEFAULT '0',
-  `is_permission` tinyint NOT NULL,
+  `email_verify` bigint(20) NOT NULL DEFAULT 0,
+  `is_permission` tinyint(4) NOT NULL,
   `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -307,7 +345,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `status`, `avater`, `address`, `email_code`, `email_time`, `email_verify`, `is_permission`, `ip_address`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'kenneth akpan', 'kennygendowed@gmail.com', '2021-06-25 09:56:46', '$2y$10$TeMEfJmjacBR/iWrSjSNcOgX2UK2gBFTWrjxTcRzKGHBQN7bJqb7u', '08120960875', '0', NULL, NULL, '3BN2JR', '2021-06-25 10:53:59', 1, 1, '127.0.0.1', NULL, '2021-06-25 09:48:59', '2021-06-25 13:13:20');
+(1, 'kenneth akpan', 'kennygendowed@gmail.com', '2021-06-25 09:56:46', '$2y$10$bwniKjvSmSGme78UWC1u.ujt./ttOs59jWqc/u5Kmls37MNnoecfO', '08120960875', '0', NULL, NULL, '3BN2JR', '2021-06-25 10:53:59', 1, 1, '127.0.0.1', NULL, '2021-06-25 09:48:59', '2021-06-25 22:13:47');
 
 --
 -- Indexes for dumped tables
@@ -384,49 +422,49 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `api_keys`
 --
 ALTER TABLE `api_keys`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `api_key_access_events`
 --
 ALTER TABLE `api_key_access_events`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `api_key_admin_events`
 --
 ALTER TABLE `api_key_admin_events`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bids`
 --
 ALTER TABLE `bids`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
