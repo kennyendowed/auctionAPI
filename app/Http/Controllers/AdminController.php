@@ -68,7 +68,7 @@ class AdminController extends Controller
     {
       $data['page_title'] = "View My Bids Won ";
       $data['activities'] = Bid::where([
-      ['status', '=', '1']])->get();
+      ['status', '=', '1']])->with(["author"])->orderBy('id','DESC')->get();
       $data['counts']=  $data['activities']->count();
       return response()->json(['message' =>$data,'code'=>Response::HTTP_OK],Response::HTTP_OK);
     }
