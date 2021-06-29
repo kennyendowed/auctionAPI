@@ -279,6 +279,7 @@ $token = JWTAuth::attempt($credentials, ['exp' => Carbon::now()->addDays(1)->toD
       //   $dt=new DateTime("@$u");
 
 return response()->json([
+  "user_role"=>$role,
   "status" =>  Response::HTTP_OK,
   'token' => $token
   ], Response::HTTP_OK);
