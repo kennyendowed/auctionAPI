@@ -13,7 +13,7 @@
 
 Route::group(['middleware' => 'cors'], function () {
   Route::post('/signUp', 'AuthController@create');
-  Route::get('/Authorization/{id?}', 'TokenController@Authorization')->name('Authorization');
+  Route::post('/Authorization', 'TokenController@Authorization')->name('Authorization');
   Route::post('reset-password-link', 'Auth\ForgotPasswordController@getUserResetLinkEmail')->name('reset-password-link');
   Route::post('password.reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
 Route::get('/clear', 'TokenController@clearRoute');

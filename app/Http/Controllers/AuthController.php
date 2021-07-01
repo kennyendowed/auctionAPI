@@ -154,10 +154,8 @@ class AuthController extends Controller
           $text ="
           <p>Hello ".$name.",  </p>
           <p> Welcome you to ".config('app.name')." as we hope to serve you better. </p>
-          <p>Otp is ".$email_code."</p> <p>  Please click on the link to verify your Invitation. </p>
-
-<br />
-<a href=".$url.">Verify E-Mail</a>
+          <p>Otp is ".$email_code."</p> 
+         
 ";
 $data = array(
   'text' => $text

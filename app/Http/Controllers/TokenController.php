@@ -36,28 +36,28 @@ return new TokenResource($token);
     return response()->json($user);
   }
 
-  public function Authorization(Request $request ,$id)
+  public function Authorization(Request $request)
   {
       $url="http://localhost:4200/login";
     //Crypt::decrypt($request->id)
     //Crypt::encrypt($request->id)
 
-  $user = User::where('email_code','=',$id)->get();
+  $user = User::where('email_code','=',$request->code)->get();
 //dd($user->isEmpty());
 
 if (!$user->isEmpty()) {
-if ($user[0]->email_code == $id)
+if ($user[0]->email_code == $request->code)
 {
     $datetime=date("Y-m-d h:i:s");
     $useOwner = User::findOrFail($user[0]->id);
     $useOwner->email_verify = 1;
     $useOwner->email_verified_at = $datetime;
     $useOwner->save();
-    return Redirect::away($url);
-   //  return response()->json([
-   //  "status" =>  Response::HTTP_OK,
-   //  "developerMessage" => $request->get('name')."Welcome Verification successfully!"
-   // ],Response::HTTP_OK);
+    //return Redirect::away($url);
+    return response()->json([
+    "status" =>  Response::HTTP_OK,
+    "developerMessage" => $request->get('name')."Welcome Verification successfully!"
+   ],Response::HTTP_OK);
 }else{
  return response()->json([
  "status" =>  Response::HTTP_NOT_FOUND,
