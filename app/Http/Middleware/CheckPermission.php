@@ -24,7 +24,7 @@ class CheckPermission
 
         $data=array(
         'message'=>"You do not have the required permission to access this resource please contact admin",
-        'code'=>'403'
+        'status'=>'403'
         );
 
                   return response()->json(compact('data'));

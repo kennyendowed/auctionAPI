@@ -27,6 +27,8 @@ class DashboardController extends Controller
     public function getProducts()
     {
         $data['page_title'] = "View Products";
+        $productsCount = Bid::where([  ['user_id', '=',Auth::user()->id]])->get();
+        $data['totalWin']=  $productsCount->count();
         $data['activities'] = Products::where('Status','=','0')->get();
         return response()->json(['message' =>$data,"status"=>Response::HTTP_OK],Response::HTTP_OK);
     }
